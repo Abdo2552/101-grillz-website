@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-char text-bone font-body antialiased;
+  background-image: radial-gradient(ellipse at top, #241b16 0%, #171210 55%);
+}
+
+::selection {
+  @apply bg-ember text-bone;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #F2A71B;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  letter-spacing: 0.01em;
+}
+
+/* Flame underline — the signature mark, echoing the flame over the "0" */
+.flame-rule {
+  position: relative;
+  display: inline-block;
+}
+.flame-rule::after {
+  content: '';
+  position: absolute;
+  left: 0.05em;
+  right: 0.05em;
+  bottom: -0.12em;
+  height: 0.11em;
+  background: linear-gradient(90deg, #DD2A1B, #F2A71B);
+  border-radius: 999px;
+}
+
+/* Ticket / menu-board card notch */
+.ticket-edge {
+  --notch: 10px;
+  -webkit-mask-image: radial-gradient(circle at 0 50%, transparent var(--notch), black calc(var(--notch) + 0.5px)),
+    radial-gradient(circle at 100% 50%, transparent var(--notch), black calc(var(--notch) + 0.5px));
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
